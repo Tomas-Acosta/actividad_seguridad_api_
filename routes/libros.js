@@ -6,7 +6,7 @@ const { requiredScopes } = require("express-oauth2-jwt-bearer");
 
 
 // Ruta para obtener todos los libros
-router.get('/', requiredScopes("read:productos"), async (req, res) => {
+router.get('/', requiredScopes("read:productos"), async (req, res) => { // para el test dejé read:productos ya que read:libros devuelve status 403. Los scopes esperados en el generador de token son read:productos, write:productos, read:estudiantes 
     try {
         const libros = await Libro.find();
         res.json(libros);
